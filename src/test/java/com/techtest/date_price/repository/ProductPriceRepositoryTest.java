@@ -8,10 +8,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.jdbc.Sql;
 
 import com.techtest.date_price.repository.projection.ProductPriceSummary;
 
-@DataJpaTest(properties = "spring.sql.init.mode=always")
+@DataJpaTest(properties = "spring.datasource.initialization-mode=never")
+@Sql(scripts = "/test-data.sql")
 class ProductPriceRepositoryTest {
 
 	@Autowired
