@@ -27,7 +27,6 @@ public class ProductPriceServiceController {
 	 * @param brandId   id of the brand
 	 * @param productId id of the product
 	 * @param date      optional, date for the price. If null, current time is used
-	 *                  TODO this should be consider by the requester
 	 * @return
 	 * @throws ProductPriceNotFoundException
 	 */
