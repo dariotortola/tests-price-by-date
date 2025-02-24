@@ -45,7 +45,7 @@ public class ProductPriceController {
 			mediaType = "application/json", schema = @Schema(
 					implementation = ProductPriceSummarySchema.class)))
 	@ApiResponse(responseCode = "404", description = "Price not found for the combination of product, brand and date", content = @Content)
-	@GetMapping("brand/{brandId}/product/{productId}")
+	@GetMapping("brand/{brandId}/product/{productId}/price")
 	public ProductPriceSummary getProductPrice(@PathVariable("brandId") Integer brandId,
 			@PathVariable("productId") Integer productId,
 			@RequestParam(required = false) @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime date)
