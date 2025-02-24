@@ -13,6 +13,7 @@ Human friendly information is in http://localhost:8080/swagger-ui/index.html.
 
 Keep in mind that the database population includes only brand 1, product 35455, and dates from 2020-06-14 to 2020-12-31. Querying dates outside the range, or different brands and products produce a 404 response.
 # Design choices
+The design approach is DDD, thinking about the business objects first. The class organization follows a three-tier archiecture, with separate layers for persistence, service, and controller, implementing the Service Layer Pattern.
 ## Model
 The model's core class is ProductPrice. Each instance represents a particular price for a particular product, within some time constraints. There is also a priority field to disambiguate. It is related with Brand and Product, both many-to-one since, obviously, there may be several price information for the same combinations of brand and product id. I set those connections to fetch lazy because in most cases I can imagine where I want price information of a product, I either have the brand and product information, or I don't care.
 Brand and Product cases I only wrote the id fields. In a real case there would be information of name, fabrics, and whatnot.
