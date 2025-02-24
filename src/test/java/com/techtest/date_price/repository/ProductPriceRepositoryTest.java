@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.jdbc.Sql;
 
 import com.techtest.date_price.repository.projection.ProductPriceSummary;
@@ -46,8 +45,8 @@ class ProductPriceRepositoryTest {
 
 	void testPriceExpected(LocalDateTime date, BigDecimal expectedPrice, Integer expectedPriceListId) {
 		ProductPriceSummary result = productPriceRepository
-				.findByProductBrandDate(35455, 1, date, PageRequest.ofSize(1)).stream()
-				.findFirst().orElseThrow();
+				.findFirstByProductBrandDate(35455, 1, date)
+				.orElseThrow();
 		Assertions.assertEquals(0, expectedPrice.compareTo(result.getPrice()));
 		Assertions.assertEquals(expectedPriceListId, result.getPriceListId());
 	}
