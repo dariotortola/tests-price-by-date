@@ -1,4 +1,4 @@
-package com.techtest.date_price;
+package com.techtest.date_price.unit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

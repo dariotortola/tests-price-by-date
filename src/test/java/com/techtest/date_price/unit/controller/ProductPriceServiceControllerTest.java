@@ -1,4 +1,4 @@
-package com.techtest.date_price.controller;
+package com.techtest.date_price.unit.controller;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.techtest.date_price.controller.ProductPriceController;
 import com.techtest.date_price.controller.exception.ProductPriceNotFoundException;
 import com.techtest.date_price.repository.projection.ProductPriceSummary;
 import com.techtest.date_price.service.ProductPriceService;

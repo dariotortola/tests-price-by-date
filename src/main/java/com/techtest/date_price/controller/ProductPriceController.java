@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techtest.date_price.controller.exception.ProductPriceNotFoundException;
 import com.techtest.date_price.controller.openapi.ProductPriceSummarySchema;
 import com.techtest.date_price.repository.projection.ProductPriceSummary;
-import com.techtest.date_price.service.ProductPriceService;
+import com.techtest.date_price.service.IProductPriceService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProductPriceController {
 
-	private final ProductPriceService productPriceService;
+	private final IProductPriceService productPriceService;
 
 	/**
 	 * Finds information about the price that should be applied to a product

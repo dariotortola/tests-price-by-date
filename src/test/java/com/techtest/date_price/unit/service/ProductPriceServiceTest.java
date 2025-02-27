@@ -1,4 +1,4 @@
-package com.techtest.date_price.service;
+package com.techtest.date_price.unit.service;
 
 import static org.mockito.ArgumentMatchers.eq;
 
@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.techtest.date_price.repository.ProductPriceRepository;
 import com.techtest.date_price.repository.projection.ProductPriceSummary;
+import com.techtest.date_price.service.ProductPriceService;
 
 @ExtendWith(MockitoExtension.class)
 public class ProductPriceServiceTest {
