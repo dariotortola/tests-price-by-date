@@ -28,6 +28,14 @@ First, if the date parameter is not provided, it uses the current date and time.
 Second, we define the url to access the resource. In our case, we use brand/{}/product/{}/price to identify "price information belonging to this product of this brand". I understand that date is a parameter that does not identify the resource although it complements the information recovery. I could use just {brandId}/{productId}, but I don't know how many other combinations of two numbers could be. I consider that the url I chose have less risk to change due toadding more endpoints in the future.
 In both repository and service I return an Optional, the controller returns a ProductPriceSummary. If the price could not be found, it throws a custom exception, ProductPriceNotFoundException. This Exception includes a response status 404 Not Found. I could do that with an ExceptionHandler, but I think the Exception's scope is close enough that it always make sense for it to be 404.
 I also add OpenAPI information by using swagger annotations Operation, Parameter, ApiResponse, Content and Schema. This makes easier to understand the service to other developers who care only about using it and generates nice resources for automatic detection, if needed. I use an additional ProductPriceSummarySchema class to add OpenApi information on the result of the endpoint without using swagger annotations in my Projection. If I were to separate my persistence classes to a library, for instance, this prevents me needing swagger where I wouldn't need it.
+(After feedback) 
+I added an interface for the service to allow using it in the controller, instead of referencing the implementation directly.
+Also, instead of declaring the response status in ProductPriceNotFoundException, I added a GlobalExceptionHandler, so I could centralize other exceptions in future developments.
+## Testing
+(After feedback) 
+I relied on IDE tools to check coverage, but now I added Jacoco plugin for those relying only in maven.
+I changed repository tests to use ParameterizedTest. Also, I separated integration from unit tests, also for maven. 
+Regarding integration tests, I added a test for the controller. This may make the repository test redundant because it is also covered by the controller test, but I leave it for ilustration purposes and also because, if the controller test fails but the repository doesn't, I have evidence that the problem is not with the persistence layer.
 # Future developments
 These ideas are not implemented, but would probably be of interest.
 The current project includes information about the currency, but not the country. However, price could be country-sensitive. Some products may be avaiable at different dates in different countries, and that implies that what is trending in one country may be brand new in a second one or ending its life in a third one.
